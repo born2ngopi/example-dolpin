@@ -5,9 +5,7 @@ import (
 	"github.com/born2ngopi/example-dolpin/types"
 )
 
-func CheckFunction(a, b int, aStr, bStr string) (int, int, error) {
-
-	s := service.New()
+func CheckFunction(a, b int, aStr, bStr string, s service.Service) (int, int, error) {
 
 	res1 := s.Sum(a, b)
 
