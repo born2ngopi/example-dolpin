@@ -1,14 +1,23 @@
 package check
 
-import "github.com/born2ngopi/example-dolpin/types"
+import (
+	"github.com/born2ngopi/example-dolpin/service"
+	"github.com/born2ngopi/example-dolpin/types"
+)
 
-type Coba struct {
-	Name string
-}
+func CheckFunction(a, b int, aStr, bStr string) (int, int, error) {
 
-func CheckFunction(msg types.Message, check Coba) string {
+	s := service.New()
 
-	msg.Name = "CheckFunction"
+	res1 := s.Sum(a, b)
 
-	return msg.Name
+	res2, err := s.SumFromStr(types.SumField{
+		A: aStr,
+		B: bStr,
+	})
+	if err != nil {
+		return 0, 0, err
+	}
+
+	return res1, res2, nil
 }
